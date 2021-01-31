@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    overflow-x: hidden;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+}
+.hidden{
+    display: none;
+}
+
+/* Navbar */
+.navbar{
+    background-color: #000000;
+    box-shadow:  0 2px 4px 0 #ffffff;
+}
+.navbar-brand{
+    color: #DCA424;
+    font-weight: bold;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.navbar-brand:hover{
+    color: white;
+    background-color: #202020;
+    border-radius: 5px;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.navbar ul li a{
+    color: white;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.navbar ul li a:hover{
+    color: #DCA424;
+    background-color: #202020;
+    border-radius: 5px;
+    padding-left: 10px;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    
+}
+.navbar .navbar-toggler{
+    color: #DCA424;
+    background-color: #2e2727;
+    border-color: #DCA424;
+}
+
+
+.navbar button span
+{
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(219,164,36, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
