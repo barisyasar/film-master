@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 body{
+    margin-top: 65px;
     overflow-x: hidden;
     background-color: #000000;
     color: #ffffff;
@@ -17,7 +18,7 @@ body{
 /* Navbar */
 .navbar{
     background-color: #000000;
-    box-shadow:  0 2px 4px 0 #ffffff;
+    box-shadow:  0 1px 2px 0 #ffffff;
 }
 .navbar-brand{
     color: #DCA424;
@@ -37,7 +38,7 @@ body{
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
-.navbar ul li a:hover{
+.navbar ul li a:not(.active):hover{
     color: #DCA424;
     background-color: #202020;
     border-radius: 5px;
@@ -50,6 +51,11 @@ body{
     color: #DCA424;
     background-color: #2e2727;
     border-color: #DCA424;
+}
+
+.navbar ul li a.active{
+    text-decoration: underline;
+    color: #DCA424;
 }
 
 
