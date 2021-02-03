@@ -11,7 +11,7 @@ body{
     background-color: #000000;
     color: #ffffff;
     text-decoration: none;
-    background: url(../images/woodenBG.jpg);
+    background-color: #262626;
 }
 .hidden{
     display: none;

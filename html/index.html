@@ -72,26 +72,44 @@
                     </a>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <img src="../images/topTen.jpeg" class="w-100 h-100" alt="topTenMovies">
-            </div>
 
+            <div class="col-md-4" id="gununFilmiIndex">
+
+            </div>
 
         </div>
-        <div class="row">
-
-            <div class="col-4 bg-light">
-                <h1>reklam</h1>
-            </div>
-            <div class="col-4"  id="gununFilmiIndex">
-               
-            </div>
-            <div class="col-4 ">
+        <div class="row mb-2 ">
+            <div class="col-md-4 mb-md-0 mb-2">
                 <img src="../images/random.jpeg" class="w-100 h-100" alt="random">
             </div>
+            <div class="col-md-8 ">
+                <img src="../images/a.jpeg" class="w-100 h-100" alt="topTenMovies">
+            </div>
 
         </div>
-        
+
+        <!-- Filmler -->
+
+        <!-- Film Filters -->
+        <div class="row filter-buttons justify-content-center sticky-top">
+            <button type="button" data-filter="all" class="active" id='all'>All</button>
+            <button type="button" data-filter="Motivasyon">Motivasyon</button>
+            <button type="button" data-filter="Komedi">Komedi</button>
+            <button type="button" data-filter="Dram">Dram</button>
+            <button type="button" data-filter="Romantik">Romantik</button>
+            <button type="button" data-filter="Yeşilçam">Yeşilçam</button>
+        </div>
+        <!-- Film Filters End-->
+
+        <!-- Film Listesi  -->
+        <div class="row" id="filmler">
+
+        </div>
+        <!-- Film Listesi  End-->
+
+
+        <!-- Filmler End -->
+
     </div>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase.js"></script>

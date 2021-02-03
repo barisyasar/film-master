@@ -2,3 +2,42 @@
     margin-bottom: 10px;
     height: auto;
 }
+
+.top-random img{
+    max-height: 300px;
+}
+
+.filter-buttons{
+    top: 50px;
+    background-color: #000000;
+    border-radius: 5px;
+    border-bottom: 1px solid #ffffff;
+    padding: 5px;
+    margin-bottom: 7px;
+}
+.filter-buttons button{
+    text-decoration: none;
+    margin: 2px;
+    padding: 5px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.filter-buttons button.active{
+    color: #DCA424;
+    text-decoration: underline;
+}
+.filter-buttons button:not(.active):hover{
+    color: #DCA424;
+    background-color: #202020;
+    border-radius: 5px;
+    padding-left: 10px;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+#filmler div{
+    
+}
