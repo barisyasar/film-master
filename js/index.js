@@ -16,16 +16,61 @@ const filmler = document.getElementById('filmler');
 
 
 // Definition Function
-const setFilmler = (nameF,imgF,turF,kodF) => {
+
+const filmFilter = () => {
+    const filterContainer = document.querySelector(".filter-buttons"),
+    filterBtns =filterContainer.children;
+    totalFilterBtn=filterBtns.length;
+
+    portfolioItems=document.querySelectorAll(".film-item-con");
+  
+    totalPortfolioItem=portfolioItems.length;
+    console.log(totalPortfolioItem);
+    
+    for(let i=0 ;i<totalFilterBtn;i++){
+        filterBtns[i].addEventListener("click",function(){
+          filterContainer.querySelector(".active").classList.remove("active");  
+          this.classList.add("active");
+          const filterValue =this.getAttribute("data-filter");
+          
+          for(let k = 0;k<totalPortfolioItem;k ++){
+            if(filterValue === portfolioItems[k].getAttribute("data-category")){
+              portfolioItems[k].classList.add("show");
+              portfolioItems[k].classList.remove("hide");
+            }
+            else{
+              portfolioItems[k].classList.remove("show");
+              portfolioItems[k].classList.add("hide")
+            }
+            if(filterValue === "all"){
+              portfolioItems[k].classList.add("show");
+              portfolioItems[k].classList.remove("hide");
+            }
+          }
+        })
+    }
+}
+
+const setFilmler = (nameF,imgF,turF,kodF,yapimyiliF,imdbpuaniF) => {
     filmler.innerHTML += 
     `
-    <div class ="col-md-4 p-1 ">
-    <div class="film-item w-100 h-100" data-category="${turF}" name="${kodF}" style="background-color: #000000; color: black;border: 4px solid #ffffff;">
-    <img src="${imgF}" class="w-100 h-100" style="max-height: 270px;">
-    <div class="text-center" style="overflow: hidden;
+    <div class ="col-md-4 p-1 film-item-con" data-category="${turF}">
+    <div class="film-item card w-100 h-100"  name="${kodF}" style="background-color: #000000; color: black;">
+    <img src="${imgF}" class="w-100 h-100" style="max-height:300px">
+    <div class="text-center card-body pt-0 pb-3" style="overflow: hidden;
     white-space: nowrap;">
+    
     <h5 class="pt-1" style="color: #DCA424;"><b>${nameF}</b></h5>
-    <p class="bg-light d-block p-1 mx-4 mb-2" style="border-radius: 5px; "><b>${nameF}</b></p>
+    <div class="float-left ml-4 d-block">
+    <p class="d-inline p-1 rounded-left" style="background-color: #DCA424;color:#000000"><b>IMDb: </b></p>
+    <p class="bg-light d-inline p-1 rounded-right" ><b>${imdbpuaniF}</b></p>
+    </div>
+    <div class="float-right mr-5">
+    <p class="d-inline p-1 rounded-left" style="background-color: #DCA424;color:#000000"><b>Yapım Yılı: </b></p>
+    <p class="bg-light d-inline p-1 rounded-right" ><b>${yapimyiliF}</b></p>
+    </div>
+   
+    
     
 
     </div>
@@ -37,21 +82,29 @@ const setFilmler = (nameF,imgF,turF,kodF) => {
 }
 
 const getFilmler = (number) => {
-     
+    
     for (i = 1; i < number + 1; i++) {
 
         refIndexFilmler.child(i).on("value", function (snapshot) {
 
             snapshot.forEach(function (data) {
-
+                
                 nameFilm = data.val().filmadi;
                 imgFilm = data.val().resim;
                 turFilm = data.val().filmturu;
                 kodFilm = data.key;
-                setFilmler(nameFilm, imgFilm, turFilm, kodFilm);
+                yapimYiliFilm = data.val().yapimyili;
+                imdbpuaniFilm = data.val().imdbpuani;
+                setFilmler(nameFilm, imgFilm, turFilm, kodFilm,yapimYiliFilm,imdbpuaniFilm);
+                
             });
+            
+            
+            
         });
+        filmFilter();
     }
+    
 }
 
 const getNumberFilm = (callback) => {
@@ -59,6 +112,7 @@ const getNumberFilm = (callback) => {
     refIndexFilmler.once("value")
         .then(function (snapshot) {
             childCountFilm = snapshot.numChildren();
+            
             callback(childCountFilm);
         });
 }
@@ -66,7 +120,7 @@ const getNumberFilm = (callback) => {
 const setGununFilmi = (nameGF, imgGF) => {
     gununFilmiIndex.innerHTML =
         `
-    <div style="background-color: #000000; color: black;border: 4px solid #ffffff;">
+    <div style="background-color: #000000; color: black;border: 4px solid #DCA424;">
     <img src="${imgGF}" alt="${nameGF}" class="w-100 h-100" style="max-height: 300px;">
     <div class="text-center" style="overflow: hidden;
     white-space: nowrap;">
@@ -122,6 +176,7 @@ const getHaberler = (callback) => {
 };
 
 // Call Functions
+// setTimeout(filmFilter, 4000);
 getNumberFilm(getFilmler);
 
 getGununFilmi(setGununFilmi);

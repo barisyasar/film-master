@@ -6,6 +6,17 @@
 .top-random img{
     max-height: 300px;
 }
+#gununFilmiIndex div,
+#random,#topten{
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#gununFilmiIndex div:hover,
+#random:hover,#topten:hover{
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+    cursor: pointer;
+}
 
 .filter-buttons{
     top: 50px;
@@ -14,8 +25,12 @@
     border-bottom: 1px solid #ffffff;
     padding: 5px;
     margin-bottom: 7px;
+    display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
 }
 .filter-buttons button{
+    
     text-decoration: none;
     margin: 2px;
     padding: 5px;
@@ -38,6 +53,14 @@
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
-#filmler div{
-    
+#filmler div .film-item{
+    border: 4px solid #ffffff;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#filmler div .film-item:hover{
+    border: 4px solid #DCA424;
+    cursor: pointer;
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01);
 }
