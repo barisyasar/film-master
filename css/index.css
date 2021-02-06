@@ -53,6 +53,7 @@
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
+
 #filmler div .film-item{
     border: 4px solid #ffffff;
     -webkit-transition: all 0.3s ease;
@@ -63,4 +64,33 @@
     cursor: pointer;
     -webkit-transform: scale(1.01);
     transform: scale(1.01);
+}
+#filmler .film-item-con.show{
+    display: block;
+    animation: showItem 0.5s ease;
+}
+
+@-webkit-keyframes showItem{
+    0%{
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100%{
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes showItem{
+    0%{
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100%{
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
 }

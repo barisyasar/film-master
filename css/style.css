@@ -38,10 +38,17 @@ body{
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
+.navbar ul li {
+    
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 .navbar ul li a{
     color: white;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
+    
 }
 .navbar ul li a:not(.active):hover{
     color: #DCA424;

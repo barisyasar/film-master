@@ -1,0 +1,9 @@
+.gunun-film-item {
+  background-color: #000000;
+  color: black;
+  border: 2px solid #ffffff;
+}
+.gunun-film-item .card-body .no-ozet {
+  overflow: scroll;
+  white-space: nowrap;
+}

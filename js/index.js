@@ -43,6 +43,7 @@ const filmFilter = () => {
               portfolioItems[k].classList.add("hide")
             }
             if(filterValue === "all"){
+              
               portfolioItems[k].classList.add("show");
               portfolioItems[k].classList.remove("hide");
             }
@@ -54,7 +55,7 @@ const filmFilter = () => {
 const setFilmler = (nameF,imgF,turF,kodF,yapimyiliF,imdbpuaniF) => {
     filmler.innerHTML += 
     `
-    <div class ="col-md-4 p-1 film-item-con" data-category="${turF}">
+    <div class ="col-md-6 col-lg-4  p-1 film-item-con" data-category="${turF}">
     <div class="film-item card w-100 h-100"  name="${kodF}" style="background-color: #000000; color: black;">
     <img src="${imgF}" class="w-100 h-100" style="max-height:300px">
     <div class="text-center card-body pt-0 pb-3" style="overflow: hidden;
@@ -65,7 +66,7 @@ const setFilmler = (nameF,imgF,turF,kodF,yapimyiliF,imdbpuaniF) => {
     <p class="d-inline p-1 rounded-left" style="background-color: #DCA424;color:#000000"><b>IMDb: </b></p>
     <p class="bg-light d-inline p-1 rounded-right" ><b>${imdbpuaniF}</b></p>
     </div>
-    <div class="float-right mr-5">
+    <div class="float-right mr-4 mr-lg-5">
     <p class="d-inline p-1 rounded-left" style="background-color: #DCA424;color:#000000"><b>Yapım Yılı: </b></p>
     <p class="bg-light d-inline p-1 rounded-right" ><b>${yapimyiliF}</b></p>
     </div>
@@ -102,7 +103,7 @@ const getFilmler = (number) => {
             
             
         });
-        filmFilter();
+        
     }
     
 }
@@ -176,7 +177,7 @@ const getHaberler = (callback) => {
 };
 
 // Call Functions
-// setTimeout(filmFilter, 4000);
+setTimeout(filmFilter, 3000);
 getNumberFilm(getFilmler);
 
 getGununFilmi(setGununFilmi);
