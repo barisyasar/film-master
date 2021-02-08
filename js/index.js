@@ -54,24 +54,28 @@ const filmFilter = () => {
     }
 }
 
-const setFilmler = (nameF,imgF,turF,kodF,yapimyiliF,imdbpuaniF) => {
+const setFilmler = (nameF,imgF,turF,kodF,yapimyiliF,imdbpuaniF,turnoFilm) => {
     filmler.innerHTML += 
     `
-    <div class ="col-md-6 col-lg-4  p-1 film-item-con" data-category="${turF}">
-    <div class="film-item card w-100 h-100"  name="${kodF}" style="background-color: #000000; color: black;">
+    <div class ="col-md-6 col-lg-4  p-1 film-item-con" id="${turnoFilm}" name="${kodF}" data-category="${turF}">
+    <div class="film-item card w-100 h-100" style="background-color: #000000; color: black;">
     <img src="${imgF}" class="w-100 h-100" style="max-height:300px">
     <div class="text-center card-body pt-0 pb-3" style="overflow: hidden;
     white-space: nowrap;">
-    
+   
     <h5 class="pt-1" style="color: #DCA424;"><b>${nameF}</b></h5>
-    <div class="float-left ml-4 d-block">
-    <p class="d-inline p-1 rounded-left" style="background-color: #DCA424;color:#000000"><b>IMDb: </b></p>
-    <p class="bg-light d-inline p-1 rounded-right" ><b>${imdbpuaniF}</b></p>
-    </div>
-    <div class="float-right mr-4 mr-lg-5">
+    <div class="row d-flex justify-content-around">
+    <div class="col-5">
+    
     <p class="d-inline p-1 rounded-left" style="background-color: #DCA424;color:#000000"><b>Yapım Yılı: </b></p>
     <p class="bg-light d-inline p-1 rounded-right" ><b>${yapimyiliF}</b></p>
     </div>
+    <div class="col-5">
+    <p class="d-inline p-1 rounded-left" style="background-color: #DCA424;color:#000000"><b>IMDb: </b></p>
+    <p class="bg-light d-inline p-1 rounded-right" ><b>${imdbpuaniF}</b></p>
+    </div>
+    </div
+
    
     
     
@@ -98,7 +102,8 @@ const getFilmler = (number) => {
                 kodFilm = data.key;
                 yapimYiliFilm = data.val().yapimyili;
                 imdbpuaniFilm = data.val().imdbpuani;
-                setFilmler(nameFilm, imgFilm, turFilm, kodFilm,yapimYiliFilm,imdbpuaniFilm);
+                turnoFilm = data.val().turno;
+                setFilmler(nameFilm, imgFilm, turFilm, kodFilm,yapimYiliFilm,imdbpuaniFilm,turnoFilm);
                 
             });
             
@@ -124,8 +129,9 @@ const setGununFilmi = (nameGF, imgGF) => {
     gununFilmiIndex.innerHTML =
         `
     <div class="gf" style="background-color: #000000; color: black;border: 4px solid #DCA424;">
-    
+    <a href="./gununFilmiPage.html">
     <img src="${imgGF}" alt="${nameGF}" class="w-100 h-100">
+    </a>
     <div class="text-center" style="overflow: hidden;
     white-space: nowrap;">
     <h5 class="pt-1" style="color: #DCA424;"><b>Günün Filmi</b></h5>
@@ -156,7 +162,9 @@ const setHaberler = (imgHaber, numberHaber) => {
     <li data-target="#carouselExampleIndicators" data-slide-to="${numberHaber}" class="carousel_indicator"></li>
     `;
     carousel_inner.innerHTML += `<div class="carousel-item">
-                                    <img class="d-block w-100"  src="${imgHaber}" alt="${numberHaber}. slide">
+                                    <a href="./gununFilmiPage.html">
+                                    <img class="d-block w-100" href="./gununFilmiPage.html"  src="${imgHaber}" alt="${numberHaber}. slide">
+
                                  </div>`;
 };
 

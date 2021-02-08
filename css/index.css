@@ -9,17 +9,22 @@
 .top-random img{
     max-height: 300px;
 }
+#carouselExampleIndicators:hover{
+  cursor: pointer;
+}
 
 #gununFilmiIndex .gf,
 #random,#topten{
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
+   
 }
 #gununFilmiIndex .gf:hover,
 #random:hover,#topten:hover{
     -webkit-transform: scale(1.02);
     transform: scale(1.02);
     cursor: pointer;
+    
    
 }
 

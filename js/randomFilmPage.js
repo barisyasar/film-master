@@ -2,22 +2,26 @@
 
 // Firebase
 var databaseIndex = firebase.database();
-var refGununPage = databaseIndex.ref("Gunun Filmi");
-var refFilmler = databaseIndex.ref("Filmler");
+var refGununPage = databaseIndex.ref("Filmler");
+var refAdmin = databaseIndex.ref("Admin Filmi");
+
+
+
+
 
 // ID'ler
-var filmFragmanGF ;
+var filmFragmanGF;
 var filmTuruGF;
-var filmYapimYiliGF ;
-var filmImdbPuaniGF ;
-var filmYonetmenGFvarName ;
+var filmYapimYiliGF;
+var filmImdbPuaniGF;
+var filmYonetmenGFvarName;
 var filmOyuncularGF;
-var filmOzetiGF ;
-var filmAdiGF ;
+var filmOzetiGF;
+var filmAdiGF;
 var gunun_film_item = document.getElementById('gunun-film-item');
 
 const bunlaraBak = document.getElementById('bunlaraBak');
-var filmNameAF,filmImdbAF,filmImgAF;
+var filmNameAF, filmImdbAF, filmImgAF;
 
 // Def Function
 const setAdminFilmi = (filmNameAF, filmImdbAF, filmImgAF) => {
@@ -52,11 +56,11 @@ const getAdminFilmi = (callback) => {
     //         }
     //     );
     // });
-    refFilmler.once("value")
+    refGununPage.once("value")
     .then(function (snapshot) {
         var randomChildID = Math.floor(Math.random() * snapshot.numChildren()) + 1;
 
-        refFilmler.child(randomChildID).once("value").then(function (snapshot2) {
+        refGununPage.child(randomChildID).once("value").then(function (snapshot2) {
             
             snapshot2.forEach(function (snapshot3) {
                 filmNameAF = snapshot3.val().filmadi;
@@ -70,7 +74,7 @@ const getAdminFilmi = (callback) => {
     });
 }
 
-const setGununFilmi = (filmAdiGF,filmOzetiGF,filmturuGF,filmYonetmenGFvarName,filmImdbPuaniGF,filmOyuncularGF,filmYapimYiliGF) => {
+const setGununFilmi = (filmAdiGF, filmOzetiGF, filmturuGF, filmYonetmenGFvarName, filmImdbPuaniGF, filmOyuncularGF, filmYapimYiliGF) => {
     gunun_film_item.innerHTML +=
         `
         <iframe height="400" id="filmFragmanGF" src="https://www.youtube.com/embed/${filmFragmanGF}" frameborder="0"
@@ -138,20 +142,30 @@ const setGununFilmi = (filmAdiGF,filmOzetiGF,filmturuGF,filmYonetmenGFvarName,fi
 }
 
 const getGununFilmi = (callback) => {
-    
-    refGununPage.child("-MD1IT2d7c7FYtd_N0Kp").on("value", function (snapshot) {
-        filmFragmanGF = snapshot.val().fragmanlinkiGF;
-        filmAdiGF= snapshot.val().ad;
-        filmOzetiGF = snapshot.val().filmozetiGF;
-        filmTuruGF = snapshot.val().filmturuGF;
-        filmYonetmenGFvarName = snapshot.val().filmyonetmeniGF;
-        filmImdbPuaniGF = snapshot.val().imdbpuaniGF;
-        filmOyuncularGF = snapshot.val().oyuncularGF;
-        filmYapimYiliGF = snapshot.val().yapimyiliGF;
 
-        callback(filmAdiGF,filmOzetiGF,filmTuruGF,filmYonetmenGFvarName,filmImdbPuaniGF,filmOyuncularGF,filmYapimYiliGF);
-        
-    });
+    refGununPage.once("value")
+        .then(function (snapshot) {
+            var randomChildID = Math.floor(Math.random() * snapshot.numChildren()) + 1;
+
+            refGununPage.child(randomChildID).once("value").then(function (snapshot2) {
+                var randomChildID2 = Math.floor(Math.random() * snapshot2.numChildren()) + 1;
+                refGununPage.child(randomChildID).orderByChild("filmnumarasi").equalTo(randomChildID2).once("value", function (snapshot4) {
+                    snapshot4.forEach(function (snapshot3) {
+                        filmFragmanGF = snapshot3.val().fragmanlinki;
+                        filmAdiGF = snapshot3.val().filmadi;
+                        filmOzetiGF = snapshot3.val().filmozeti;
+                        filmTuruGF = snapshot3.val().filmturu;
+                        filmYonetmenGFvarName = snapshot3.val().yonetmen;
+                        filmImdbPuaniGF = snapshot3.val().imdbpuani;
+                        filmOyuncularGF = snapshot3.val().oyuncular;
+                        filmYapimYiliGF = snapshot3.val().yapimyili;
+
+                        callback(filmAdiGF, filmOzetiGF, filmTuruGF, filmYonetmenGFvarName, filmImdbPuaniGF, filmOyuncularGF, filmYapimYiliGF);
+                    })
+                })
+            });
+
+        });
 }
 
 // Call Function
