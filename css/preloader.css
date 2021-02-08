@@ -15,6 +15,7 @@
     justify-content: center;
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
+    
 }
 .preloader.opacity-0 {
     opacity: 0;

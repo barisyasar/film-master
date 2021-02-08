@@ -2,8 +2,30 @@
   background-color: #000000;
   color: black;
   border: 2px solid #ffffff;
+  
 }
 .gunun-film-item .card-body .no-ozet {
-  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
 }
+#bunlaraBak
+{
+ display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.film-item-con2{
+  border: 2px solid#ffffff;
+  flex: 0 0 auto;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.film-item-con2:hover{
+   border: 2px solid #DCA424;
+    cursor: pointer;
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01);
+}
+

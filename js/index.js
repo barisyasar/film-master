@@ -11,9 +11,11 @@ const carousel_inner = document.getElementById("carousel-inner");
 //Gunun Filmi
 const gununFilmiIndex = document.getElementById('gununFilmiIndex');
 
+//TopTen Listesi
+const topten = document.getElementById('topten');
+
 //Filmler
 const filmler = document.getElementById('filmler');
-
 
 // Definition Function
 
@@ -25,7 +27,7 @@ const filmFilter = () => {
     portfolioItems=document.querySelectorAll(".film-item-con");
   
     totalPortfolioItem=portfolioItems.length;
-    console.log(totalPortfolioItem);
+    
     
     for(let i=0 ;i<totalFilterBtn;i++){
         filterBtns[i].addEventListener("click",function(){
@@ -121,12 +123,13 @@ const getNumberFilm = (callback) => {
 const setGununFilmi = (nameGF, imgGF) => {
     gununFilmiIndex.innerHTML =
         `
-    <div style="background-color: #000000; color: black;border: 4px solid #DCA424;">
-    <img src="${imgGF}" alt="${nameGF}" class="w-100 h-100" style="max-height: 300px;">
+    <div class="gf" style="background-color: #000000; color: black;border: 4px solid #DCA424;">
+    
+    <img src="${imgGF}" alt="${nameGF}" class="w-100 h-100">
     <div class="text-center" style="overflow: hidden;
     white-space: nowrap;">
     <h5 class="pt-1" style="color: #DCA424;"><b>Günün Filmi</b></h5>
-        <p class="bg-light d-block p-1 mx-4 mb-2" style="border-radius: 5px; "><b>${nameGF}</b></p>
+    <p class="bg-light d-block p-1 mx-4 mb-2" style="border-radius: 5px; "><b>${nameGF}</b></p>
 
     </div>
 </div>

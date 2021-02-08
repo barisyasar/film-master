@@ -1,0 +1,16 @@
+.main #baslik{
+    color: #DCA424;
+    font-weight: bold;
+}
+.film-item{
+    border: 2px solid #ffffff;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.film-item:hover{
+     border: 2px solid #DCA424;
+    cursor: pointer;
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01);
+}
+
