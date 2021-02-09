@@ -16,6 +16,8 @@ const topten = document.getElementById('topten');
 
 //Filmler
 const filmler = document.getElementById('filmler');
+var filmTuru,filmKodu;
+
 
 // Definition Function
 
@@ -57,7 +59,7 @@ const filmFilter = () => {
 const setFilmler = (nameF,imgF,turF,kodF,yapimyiliF,imdbpuaniF,turnoFilm) => {
     filmler.innerHTML += 
     `
-    <div class ="col-md-6 col-lg-4  p-1 film-item-con" id="${turnoFilm}" name="${kodF}" data-category="${turF}">
+    <div class ="col-md-6 col-lg-4  p-1 film-item-con" onclick="filmDetayi(this)" id="${turnoFilm}" value="${kodF}" data-category="${turF}">
     <div class="film-item card w-100 h-100" style="background-color: #000000; color: black;">
     <img src="${imgF}" class="w-100 h-100" style="max-height:300px">
     <div class="text-center card-body pt-0 pb-3" style="overflow: hidden;
@@ -187,6 +189,20 @@ const getHaberler = (callback) => {
 
 };
 
+const filmDetayi = (ele) => {
+     filmTuru = ele.getAttribute("id");
+     filmKodu = ele.getAttribute("value");
+     var parameter = "filmNormal";
+    
+    sessionStorage.setItem("filmTuru", filmTuru);
+    sessionStorage.setItem("filmKodu", filmKodu);
+    sessionStorage.setItem("parameter", parameter);
+
+    window.location.assign("../html/filmDetayiPage.html");
+}
+
+
+
 // Call Functions
 setTimeout(filmFilter, 3000);
 getNumberFilm(getFilmler);
@@ -194,4 +210,6 @@ getNumberFilm(getFilmler);
 getGununFilmi(setGununFilmi);
 
 getHaberler(activeHaber);
+
+
 

@@ -17,9 +17,9 @@ var topTen = document.getElementById('topTen');
 
 
 //Def Function
-const setAdminFilmi = (filmAdiAF, filmImdbPuaniAF, filmImgAF,filmTuruAF,filmYapimYiliAF,filmYonetmenAF,filmOyuncularAF,filmNumberAF) => {
+const setAdminFilmi = (filmAdiAF, filmImdbPuaniAF, filmImgAF,filmTuruAF,filmYapimYiliAF,filmYonetmenAF,filmOyuncularAF,filmNumberAF,filmKoduAF) => {
     topTen.innerHTML += `
-    <div class="row film-item m-2  bg-dark rounded" style="color: black;">
+    <div class="row film-item m-2 bg-dark rounded" onclick="filmDetayiAF(this)" value="${filmKoduAF}" style="color: black;">
                 <div class="col-4 p-0 "><img src="${filmImgAF}" class=" w-100 h-100" style="max-height: 270px;"></div>
                 <div class="col-8 p-lg-4">
                     <div class="row mx-1 mt-2 mt-lg-3 mb-2">
@@ -71,11 +71,24 @@ const getAdminFilmi = (callback) => {
                 filmYonetmenAF = snap.val().filmyonetmeniGF;
                 filmOyuncularAF = snap.val().oyuncularGF;
                 filmNumberAF = snap.val().filmnumarasi;
+                filmKoduAF= snap.key;
                 
-            callback(filmAdiAF, filmImdbPuaniAF, filmImgAF,filmTuruAF,filmYapimYiliAF,filmYonetmenAF,filmOyuncularAF,filmNumberAF);
+            callback(filmAdiAF, filmImdbPuaniAF, filmImgAF,filmTuruAF,filmYapimYiliAF,filmYonetmenAF,filmOyuncularAF,filmNumberAF,filmKoduAF);
         }
         );
     });
+}
+
+const filmDetayiAF = (ele) => {
+    
+    var filmKodu = ele.getAttribute("value");
+    var parameter = "filmAdmin";
+
+    
+    sessionStorage.setItem("filmKodu", filmKodu);
+    sessionStorage.setItem("parameter", parameter);
+
+    window.location.assign("../html/filmDetayiPage.html");
 }
 
 //Call Function
