@@ -17,12 +17,12 @@ var filmAdiGF ;
 var gunun_film_item = document.getElementById('gunun-film-item');
 
 const bunlaraBak = document.getElementById('bunlaraBak');
-var filmNameAF,filmImdbAF,filmImgAF;
+var filmNameAF,filmImdbAF,filmImgAF,filmKoduAF,filmTuruAF;
 
 // Def Function
-const setAdminFilmi = (filmNameAF, filmImdbAF, filmImgAF) => {
+const setAdminFilmi = (filmNameAF, filmImdbAF, filmImgAF,filmkoduAF,filmturu) => {
     bunlaraBak.innerHTML += `
-      <div class="p-0 rounded  m-1 film-item-con2" style="background-color: #000000; color: black;max-width: 300px;">
+      <div class="p-0 rounded  m-1 film-item-con2" onclick="filmDetayiAF(this)" id="${filmturu}" value="${filmkoduAF}" style="background-color: #000000; color: black;max-width: 300px;">
                 <div class="film-item card w-100 h-100 mb-2" style="background-color: #000000;">
                     <img src="${filmImgAF}" class="w-100 h-100" style="max-height:250px;">
                     <div class="text-center card-body px-3 mb-0 pt-2 pb-0">
@@ -41,33 +41,25 @@ const setAdminFilmi = (filmNameAF, filmImdbAF, filmImgAF) => {
 }
 
 const getAdminFilmi = (callback) => {
-    // refAdmin.once("value", function (snapshot) {
-    //     snapshot.forEach(
-    //         function (snap) {
-    //             filmNameAF = snap.val().ad;
-    //             filmImdbAF = snap.val().imdbpuaniGF;
-    //             filmImgAF = snap.val().resim;
 
-    //             callback(filmNameAF, filmImdbAF, filmImgAF);
-    //         }
-    //     );
-    // });
     refFilmler.once("value")
-    .then(function (snapshot) {
-        var randomChildID = Math.floor(Math.random() * snapshot.numChildren()) + 1;
+        .then(function (snapshot) {
+            var randomChildID = Math.floor(Math.random() * snapshot.numChildren()) + 1;
 
-        refFilmler.child(randomChildID).once("value").then(function (snapshot2) {
-            
-            snapshot2.forEach(function (snapshot3) {
-                filmNameAF = snapshot3.val().filmadi;
-                filmImdbAF = snapshot3.val().imdbpuani;
-                filmImgAF = snapshot3.val().resim;
-            
-             callback(filmNameAF, filmImdbAF, filmImgAF);
-            })
+            refFilmler.child(randomChildID).once("value").then(function (snapshot2) {
+
+                snapshot2.forEach(function (snapshot3) {
+                    filmNameAF = snapshot3.val().filmadi;
+                    filmImdbAF = snapshot3.val().imdbpuani;
+                    filmImgAF = snapshot3.val().resim;
+
+                    filmKoduAF = snapshot3.key;
+                    filmTuruAF = snapshot3.val().turno;
+                    callback(filmNameAF, filmImdbAF, filmImgAF,filmKoduAF,filmTuruAF);
+                })
+            });
+
         });
-
-    });
 }
 
 const setGununFilmi = (filmAdiGF,filmOzetiGF,filmturuGF,filmYonetmenGFvarName,filmImdbPuaniGF,filmOyuncularGF,filmYapimYiliGF) => {
@@ -153,6 +145,19 @@ const getGununFilmi = (callback) => {
         
     });
 }
+const filmDetayiAF = (ele) => {
+    filmTuru = ele.getAttribute("id");
+    filmKodu = ele.getAttribute("value");
+    var parameter = "filmNormal";
+    
+    sessionStorage.setItem("filmTuru", filmTuru);
+    sessionStorage.setItem("filmKodu", filmKodu);
+    sessionStorage.setItem("parameter", parameter);
+
+    window.location.assign("../html/filmDetayiPage.html");
+}
+
+
 
 // Call Function
 

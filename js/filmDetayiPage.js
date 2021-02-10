@@ -17,7 +17,7 @@ var filmAdiGF;
 var gunun_film_item = document.getElementById('gunun-film-item');
 
 const bunlaraBak = document.getElementById('bunlaraBak');
-var filmNameAF, filmImdbAF, filmImgAF;
+var filmNameAF, filmImdbAF, filmImgAF,filmKoduAF,filmTuruAF;
 
 if (sessionStorage.getItem('filmTuru')){
     var filmTuru = sessionStorage.getItem('filmTuru');
@@ -27,9 +27,9 @@ var filmKodu = sessionStorage.getItem('filmKodu');
 var parameter = sessionStorage.getItem('parameter');
 
 // Def Function
-const setAdminFilmi = (filmNameAF, filmImdbAF, filmImgAF) => {
+const setAdminFilmi = (filmNameAF, filmImdbAF, filmImgAF,filmkoduAF,filmturu) => {
     bunlaraBak.innerHTML += `
-      <div class="p-0 rounded  m-1 film-item-con2" style="background-color: #000000; color: black;max-width: 300px;">
+      <div class="p-0 rounded  m-1 film-item-con2" onclick="filmDetayiAF(this)" id="${filmturu}" value="${filmkoduAF}" style="background-color: #000000; color: black;max-width: 300px;">
                 <div class="film-item card w-100 h-100 mb-2" style="background-color: #000000;">
                     <img src="${filmImgAF}" class="w-100 h-100" style="max-height:250px;">
                     <div class="text-center card-body px-3 mb-0 pt-2 pb-0">
@@ -48,17 +48,7 @@ const setAdminFilmi = (filmNameAF, filmImdbAF, filmImgAF) => {
 }
 
 const getAdminFilmi = (callback) => {
-    // refAdmin.once("value", function (snapshot) {
-    //     snapshot.forEach(
-    //         function (snap) {
-    //             filmNameAF = snap.val().ad;
-    //             filmImdbAF = snap.val().imdbpuaniGF;
-    //             filmImgAF = snap.val().resim;
 
-    //             callback(filmNameAF, filmImdbAF, filmImgAF);
-    //         }
-    //     );
-    // });
     refFilmler.once("value")
         .then(function (snapshot) {
             var randomChildID = Math.floor(Math.random() * snapshot.numChildren()) + 1;
@@ -70,14 +60,16 @@ const getAdminFilmi = (callback) => {
                     filmImdbAF = snapshot3.val().imdbpuani;
                     filmImgAF = snapshot3.val().resim;
 
-                    callback(filmNameAF, filmImdbAF, filmImgAF);
+                    filmKoduAF = snapshot3.key;
+                    filmTuruAF = snapshot3.val().turno;
+                    callback(filmNameAF, filmImdbAF, filmImgAF,filmKoduAF,filmTuruAF);
                 })
             });
 
         });
 }
 
-const setGununFilmi = (filmAdiGF, filmOzetiGF, filmturuGF, filmYonetmenGFvarName, filmImdbPuaniGF, filmOyuncularGF, filmYapimYiliGF) => {
+const setGununFilmi = (filmAdiGF, filmOzetiGF, filmturuGF, filmYonetmenGFvarName, filmImdbPuaniGF, filmOyuncularGF, filmYapimYiliGF,filmFragmanGF) => {
     gunun_film_item.innerHTML +=
         `
         <iframe height="400" id="filmFragmanGF" src="https://www.youtube.com/embed/${filmFragmanGF}" frameborder="0"
@@ -139,7 +131,6 @@ const setGununFilmi = (filmAdiGF, filmOzetiGF, filmturuGF, filmYonetmenGFvarName
                     <p class="bg-light text-left d-block p-2 rounded-bottom" id="filmOzetiGF"><b>${filmOzetiGF}</b>
                     </p>
                 </div>
-
             </div>
     `
 }
@@ -156,7 +147,7 @@ const getGununFilmi = (callback) => {
             filmOyuncularGF = snapshot.val().oyuncular;
             filmYapimYiliGF = snapshot.val().yapimyili;
 
-            callback(filmAdiGF, filmOzetiGF, filmTuruGF, filmYonetmenGFvarName, filmImdbPuaniGF, filmOyuncularGF, filmYapimYiliGF);
+            callback(filmAdiGF, filmOzetiGF, filmTuruGF, filmYonetmenGFvarName, filmImdbPuaniGF, filmOyuncularGF, filmYapimYiliGF,filmFragmanGF);
 
         });
     }
@@ -177,6 +168,18 @@ const getGununFilmi = (callback) => {
         });
     }
   
+}
+
+const filmDetayiAF = (ele) => {
+    filmTuru = ele.getAttribute("id");
+    filmKodu = ele.getAttribute("value");
+    var parameter = "filmNormal";
+    
+    sessionStorage.setItem("filmTuru", filmTuru);
+    sessionStorage.setItem("filmKodu", filmKodu);
+    sessionStorage.setItem("parameter", parameter);
+
+    window.location.assign("../html/filmDetayiPage.html");
 }
 
 // Call Function

@@ -164,8 +164,8 @@ const setHaberler = (imgHaber, numberHaber) => {
     <li data-target="#carouselExampleIndicators" data-slide-to="${numberHaber}" class="carousel_indicator"></li>
     `;
     carousel_inner.innerHTML += `<div class="carousel-item">
-                                    <a href="./gununFilmiPage.html">
-                                    <img class="d-block w-100" href="./gununFilmiPage.html"  src="${imgHaber}" alt="${numberHaber}. slide">
+                                    <a href="./aboutPage.html">
+                                    <img class="d-block w-100"   src="${imgHaber}" alt="${numberHaber}. slide">
 
                                  </div>`;
 };
