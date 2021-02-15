@@ -1,0 +1,58 @@
+
+
+.contact-info-item a{
+    text-decoration: none;
+   color: #DCA424;
+   
+}
+.contact-info-item .icon{
+    color: #DCA424;
+}
+.contact-info-item .icon .fa {
+    
+    font-size: 40px;
+}
+
+.log input,
+.log textarea{
+    border: 0;
+    background-color: #000000;
+    display: block;
+    text-align: center;
+    border: 2px solid #ffffff;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    transition: 0.25s;
+    color: #ffffff;
+
+}
+.log textarea{
+    text-align: left;
+}
+.log input:focus,
+.log textarea:focus{
+    border: 2px solid #DCA424;
+}
+
+
+
+.log input[type= "submit"]{
+    border: 0;
+    background-color: #000000;
+    display: block;
+    
+    text-align: center;
+    border: 2px solid #ffffff;
+    padding: 14px 40px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.25s;
+   
+    color: #ffffff;
+}
+
+.log input[id= "btnMesaj"]:hover{
+    background-color: #DCA424;
+    border: 2px solid #DCA424;
+}

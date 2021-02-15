@@ -14,6 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/dusuncePaylas.css" />
 
 
 </head>
@@ -25,6 +26,7 @@
         <div class="loader"></div>
     </div>
     <!-- Navbar -->
+   
     <nav class="navbar navbar-expand-md fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">Movie Advisor</a>
@@ -59,25 +61,70 @@
     </nav>
 
     <div class="main container">
-        
+
 
         <div class="row rounded d-flex justify-content-center align-items-center" style="background-color: #383e42; ">
-            <div class="col-md-6 bg-info h-100 w-100" >
-                <img src="../images/a.jpeg" class="w-100 ">
+            <div class="col-md-6 h-100 w-100">
+                <img src="../images/a.jpeg" class="w-100 py-2">
             </div>
-            <div class="col-md-6 h-100 p-1 mt-2 mt-md-1" >
+            <div class="col-md-6 h-100 p-1 mt-2 mt-md-1">
                 <h4 class="text-center rounded p-1 bg-black c-sari"><b>Movie Advisor Hakkında</b></h4>
-                <p class=" p-3  rounded overflow-auto " style="max-height: 200px;" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint dolorem atque natus commodi doloribus
-                    minus dolor culpa. Excepturi velit recusandae nemo quibusdam. Incidunt, voluptate doloribus. Neque
-                    quam autem hic dolore ea, dignissimos molestias nemo blanditiis. Hic impedit animi optio dolores ex,
-                    quam mollitia. Adipisci cum eos eius doloribus magnam qui consectetur voluptas aperiam laborum.
-                    Aperiam, similique consectetur quae iure quis eligendi, cum expedita nobis quas nemo et. Eveniet
-                    soluta quisquam maxime repudiandae nihil asperiores quam dolor, eius, doloribus reiciendis illo
-                    natus officia molestiae voluptatum laudantium! Obcaecati quidem ex sit maxime architecto qui iure.
-                    Id, enim provident eum quis nemo eaque. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate, a. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, laboriosam!</p>
+                <p class=" p-3  rounded overflow-auto " style="max-height: 200px;">Merhabalar, <br> Öncelikle Movie Advisor'ı kullandığınız için teşekkür ederim. <br>
+                    Movie advisor ile birlikte günlük film önerisi alabilir. Beğendiğim filmlere göz atabilirsiniz. <br>
+Henüz junior developer olduğumdan uygulamada hatalarım olacaktır. Bu hataları veya uygulama hakkındaki düşüncelerinizi bana iletirseniz sevinirim.
+<br> Uygulamanın android versiyonu da mevcuttur. Dilerseniz ordan da kullanabilirsiniz.
+<a href="https://play.google.com/store/apps/details?id=com.baris.filmmasterkullanici&hl=en_US&gl=US">Android uygulamasına gitmek için tıklayınız.</a>
+
+                    
+                </p>
             </div>
         </div>
-        <div class="row"></div>
+        <br>
+        <div class="row justify-content-around  bg-dark rounded p-2">
+            <div class="contact-info-item text-center">
+                <div class="icon "><a href="https://www.instagram.com/barisyasar5/" target="_blank"><i class="fa fa-instagram"></i></a></div>
+                <h4 id="contact-follow">Follow Me </h4>
+                <p>barisyasar5</p>
+            </div>
+            <!-- contact-info-item  -->
+          
+            <!-- contact-info-item -->
+            <div class="contact-info-item text-center">
+                <div class="icon"><i class="fa fa-envelope"></i></div>
+                <h4>E-mail</h4>
+                <p>barisyasar971@gmail.com</p>
+            </div>
+        </div>
+        <br>    
+        <div class="row bg-dark rounded">
+            <form class="log  p-lg-2 col-12 py-2" method="POST" id="log">
+                
+              
+                <h4 class="text-center rounded p-1 bg-black c-sari"><b>Düşüncelerini Paylaş</b></h4>
+                <div id="first"></div>
+            
+                <div class="row mb-2 justify-content-md-around justify-content-center"> 
+                    <input type="text" id="txtAd" class="col-md-5 col-11 rounded mb-2 mb-md-0" placeholder="İsim">
+                    <input type="text" id="txtSoyad" class="col-md-5 col-11 rounded" placeholder="Soyisim">
+                    
+                </div>
+                <div>
+                    <input type="text" id="txtEmail" class="d-block w-100 rounded" placeholder="E-mail">
+                </div>
+               
+                <div class="my-2"> 
+    
+                    <input type="text" id="konu" placeholder="Konu" class=" rounded d-block w-100 mb-2">
+                    <textarea type="text" id="mesaj" class="d-block w-100" rows="10"  placeholder="Mesajınız..."></textarea>
+                </div>
+    
+                
+                
+                <button type="button"  class="btn btn-warning" style="color: black;" id="btnMesaj">Gönder</button>
+               
+            </form>
+        </div>
+
 
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -89,6 +136,7 @@
 
         <script src="../js/preloader.js"></script>
         <script src="../js/firebase.js"></script>
+        <script src="../js/dusuncePaylas.js"></script>
 
     </div>
 </body>

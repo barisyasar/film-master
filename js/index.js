@@ -159,26 +159,27 @@ const activeHaber = () => {
     carousel_inner.getElementsByClassName("carousel-item")[0].classList.add("active");
 }
 
-const setHaberler = (imgHaber, numberHaber) => {
+const setHaberler = (imgHaber, numberHaber,nameHaber) => {
     carousel_indicators.innerHTML += `
     <li data-target="#carouselExampleIndicators" data-slide-to="${numberHaber}" class="carousel_indicator"></li>
     `;
     carousel_inner.innerHTML += `<div class="carousel-item">
-                                    <a href="./aboutPage.html">
+                                    <a href="./${nameHaber}.html">
                                     <img class="d-block w-100"   src="${imgHaber}" alt="${numberHaber}. slide">
 
                                  </div>`;
 };
 
 const getHaberler = (callback) => {
-    var imgHaber;
+    var imgHaber,nameHaber;
     var numberHaber = 0;
 
     refIndex.on("value", function (snapshot) {
         snapshot.forEach(function (data) {
             imgHaber = data.val().Link;
+            nameHaber = data.val().Name;
 
-            setHaberler(imgHaber, numberHaber);
+            setHaberler(imgHaber, numberHaber,nameHaber);
             numberHaber++;
         });
         callback();
