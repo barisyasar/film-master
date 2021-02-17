@@ -164,7 +164,7 @@ const setHaberler = (imgHaber, numberHaber,nameHaber) => {
     <li data-target="#carouselExampleIndicators" data-slide-to="${numberHaber}" class="carousel_indicator"></li>
     `;
     carousel_inner.innerHTML += `<div class="carousel-item">
-                                    <a href="./${nameHaber}.html">
+                                    <a href="./html/${nameHaber}.html">
                                     <img class="d-block w-100"   src="${imgHaber}" alt="${numberHaber}. slide">
 
                                  </div>`;
@@ -199,7 +199,7 @@ const filmDetayi = (ele) => {
     sessionStorage.setItem("filmKodu", filmKodu);
     sessionStorage.setItem("parameter", parameter);
 
-    window.location.assign("../html/filmDetayiPage.html");
+    window.location.assign("./html/filmDetayiPage.html");
 }
 
 
