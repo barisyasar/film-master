@@ -1,5 +1,5 @@
 # Film Master
-It is my first vanilla html-css-js project. <br/><br/>
+It is my first vanilla html-css-js project.
 ## Used Technologies
 - Bootstrap
 - Firebase for database
